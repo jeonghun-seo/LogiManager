@@ -1,9 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@drawable/bg_gradient">
+    <TextView
+        android:id="@+id/select"
+        android:layout_width="147dp"
+        android:layout_height="46dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="38dp"
+        android:text="@string/select"
+        android:textAppearance="@style/select"
+        android:gravity="top"
+        android:alpha="0.8"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:textColor="@color/white"
+            app:backgroundTint="#171717"
+            android:background="@drawable/select_button"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="입고">
+        </Button>
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:text="출고"
+            android:background="@drawable/select_button"
+            android:textColor="@color/white">
+        </Button>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="2dp"
+        android:background="#171717"/>
+</LinearLayout>

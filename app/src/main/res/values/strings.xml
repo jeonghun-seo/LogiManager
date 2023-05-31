@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Logi Manager</string>
+    <string name="dont_have">Dont have an account?</string>
+    <string name="sign_up"><u>Create an Account.</u></string>
+    <string name="welcome">Welcome Aboard!</string>
+</resources>

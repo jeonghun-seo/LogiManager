@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.LogiManager" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="Theme.LogiManager" parent="Base.Theme.LogiManager" />
+    <style name="logi_manage">
+        <item name="android:textSize">38sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:fontFamily">@font/intersb</item>
+    </style>
+
+    <style name="dont_have">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#514E4E</item>
+        <item name="android:fontFamily">@font/intersb</item>
+    </style>
+
+    <style name="sign_up">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:fontFamily">@font/interb</item>
+    </style>
+
+    <style name="welcome">
+        <item name="android:textSize">38sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:fontFamily">@font/interb</item>
+    </style>
+</resources>

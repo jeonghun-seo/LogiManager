@@ -46,7 +46,14 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_height="2dp"
         android:background="#171717"/>
+    <ListView
+        android:id="@+id/db_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="80dp"
+        tools:ignore="MissingConstraints"/>
 </LinearLayout>

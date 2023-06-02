@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         db_table = findViewById(R.id.db_table);
 
         db = itemDBHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT id, count FROM products", null);
+        Cursor cursor = db.rawQuery("SELECT _id, id, count FROM products", null);
         String[] fromColumns = { "id", "count" };
 
         // View ID 배열

@@ -35,7 +35,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/login_id"
         android:layout_marginTop="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="293dp"
@@ -44,6 +43,7 @@
         app:hintTextColor="#0174DF"
         android:hint="ID">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -51,7 +51,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/login_pw"
         android:layout_marginTop="15dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="293dp"
@@ -61,6 +60,7 @@
         app:boxStrokeColor="#0174DF"
         android:hint="PW">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"

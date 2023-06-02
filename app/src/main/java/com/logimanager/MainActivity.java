@@ -1,6 +1,7 @@
 package com.logimanager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,20 +9,23 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseHelper dbHelper;
 
-    EditText login_id;
-    EditText login_pw;
+    TextInputEditText login_id;
+    TextInputEditText login_pw;
     Button login_btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_main);
 
         dbHelper = new DatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         login_id = findViewById(R.id.login_id);
         login_pw = findViewById(R.id.login_pw);
-        login_btn = findViewById(R.id.login_btn);
+        login_btn = findViewById(R.id.login_btn);;
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         String selection = "login_id = ? AND login_pw = ?";
         String[] selectionArgs = {username, password};
 
-        Cursor cursor = db.query("users", columns, selection, selectionArgs, null, null, null);
+        Cursor cursor = db.query("usertable", columns, selection, selectionArgs, null, null, null);
 
         boolean isValid = cursor.getCount() > 0;
 
@@ -67,4 +71,5 @@ public class MainActivity extends AppCompatActivity {
 
         return isValid;
     }
+
 }

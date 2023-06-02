@@ -1,4 +1,5 @@
 package com.logimanager;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ItemDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "products.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2; // 변경된 버전
 
     public ItemDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -16,7 +17,8 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Create the table
         String createTableQuery = "CREATE TABLE products (" +
-                "id TEXT PRIMARY KEY," +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "id TEXT," +
                 "count INTEGER" +
                 ")";
         db.execSQL(createTableQuery);
@@ -25,6 +27,9 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Handle database upgrades if needed
+        String dropTableQuery = "DROP TABLE IF EXISTS products";
+        db.execSQL(dropTableQuery);
+        onCreate(db);
     }
 
     public void insertProduct(String id, int count) {

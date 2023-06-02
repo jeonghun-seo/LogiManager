@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +38,9 @@ public class SignupActivity extends AppCompatActivity {
                 String pw = signup_pw.getText().toString();
                 String phone = signup_phone.getText().toString();
                 dbHelper.addUser(id, pw, phone);
+                Toast.makeText(SignupActivity.this, "회원가입 성공", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
 
             }
         });

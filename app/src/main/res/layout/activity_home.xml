@@ -10,7 +10,7 @@
     android:background="@drawable/bg_gradient">
     <TextView
         android:id="@+id/select"
-        android:layout_width="147dp"
+        android:layout_width="160dp"
         android:layout_height="46dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
@@ -22,6 +22,7 @@
         android:alpha="0.8"
         />
     <LinearLayout
+        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"

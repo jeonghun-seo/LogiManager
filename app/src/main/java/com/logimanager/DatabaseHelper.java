@@ -14,13 +14,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_PHONE = "phone";
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableQuery = "CREATE TABLE " + TABLE_NAME + " (" +
-                COLUMN_ID + " Text PRIMARY KEY, " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_ID + " Text, " +
                 COLUMN_PW + " TEXT, " +
                 COLUMN_PHONE + " TEXT)";
         db.execSQL(createTableQuery);

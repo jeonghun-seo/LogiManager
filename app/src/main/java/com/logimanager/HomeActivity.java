@@ -2,6 +2,7 @@ package com.logimanager;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,13 +17,15 @@ import android.widget.Toast;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
     private SQLiteDatabase db;
     private SimpleCursorAdapter adapter;
     ListView db_table;
     ItemDBHelper itemDBHelper = new ItemDBHelper(this);
     Button btn_store;
     Button btn_release;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
     private final ActivityResultLauncher<ScanOptions> store_scan_qr = registerForActivityResult(new ScanContract(),
             result -> {
                 if(result.getContents() == null) {
@@ -30,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(HomeActivity.this,  result.getContents()+" 입고", Toast.LENGTH_LONG).show();
                     itemDBHelper.insertProduct(result.getContents(),(1));
+                    loadProductData();
                 }
             });
     private final ActivityResultLauncher<ScanOptions> release_scan_qr = registerForActivityResult(new ScanContract(),
@@ -39,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(HomeActivity.this,  result.getContents()+" 출고", Toast.LENGTH_LONG).show();
                     itemDBHelper.decreaseProductCount(result.getContents());
+                    loadProductData();
                 }
             });
 
@@ -50,11 +55,12 @@ public class HomeActivity extends AppCompatActivity {
         btn_store = findViewById(R.id.btn_store);
         btn_release = findViewById(R.id.btn_release);
         db_table = findViewById(R.id.db_table);
-
+        swipeRefreshLayout = findViewById(R.id.refresh);
         db = itemDBHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT _id, id, count FROM products", null);
         String[] fromColumns = { "id", "count" };
 
+        swipeRefreshLayout.setOnRefreshListener(this);
         // View ID 배열
         int[] toViews = { android.R.id.text1, android.R.id.text2 };
 
@@ -76,9 +82,28 @@ public class HomeActivity extends AppCompatActivity {
                 release_scan_qr.launch(new ScanOptions());
             }
         });
-
-
     }
+
+    @Override
+    public void onRefresh() {
+        // 데이터 다시 불러오기
+        loadProductData();
+        // 어댑터 업데이트
+        adapter.notifyDataSetChanged();
+        // 새로고침 완료
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    private void loadProductData() {
+        // 데이터 로드 로직 구현
+        // 새로운 데이터를 가져와서 어댑터에 설정하고, ListView 갱신
+        // 예시:
+        Cursor cursor = db.rawQuery("SELECT _id, id, count FROM products", null);
+        adapter.changeCursor(cursor);
+        adapter.notifyDataSetChanged();
+    }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
